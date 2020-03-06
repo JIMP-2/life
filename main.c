@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include"rules.h"
+#include<string.h>
 
 
 int main ( int argc, char *argv[]){
@@ -40,6 +42,15 @@ printf(" %d %d \n", x,y);
            fscanf(in,"%d", &t[i][j] ); 
     }
 
+	int **copy = (int**)malloc((x+1)*sizeof(int*));
+        for(int i=0; i<(x+1); i++) {
+                copy[i]=(int*)malloc((y+1)*sizeof(int));
+        }
+
+
+zmien_stan(t,copy,x,y);
+copy_tab(t,x,y);
+
 
 // zapis do pliku
 
@@ -55,5 +66,21 @@ printf(" %d %d \n", x,y);
 	fclose( out );
 
     }
+
+
+	//zwalnianie pamieci
+	for(int i=0; i<x; i++) {
+		free(t[i]);
+	}
+	free(t);
+
+	for(int i=0; i<y; i++) {
+                free(copy[i]);
+        }
+        free(copy);
+
+
+	return 0;
+
     return 0 ; 
 } 
