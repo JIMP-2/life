@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "rules.h> 
 
 
 int* zmien_stan(int* tab, int *copy, int row, int column) {
