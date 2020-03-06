@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "rules.h> 
+#include "rules.h" 
 
 
-int* zmien_stan(int* tab, int *copy, int row, int column) {
+void zmien_stan(int* tab, int *copy, int row, int column) {
 //przejscia tab->copy
 	//liczy liczbe sasiadow
 	for(int i=0; i<row; i++) {
@@ -39,7 +39,6 @@ int* zmien_stan(int* tab, int *copy, int row, int column) {
 			count=0;
 		}
 	}
-	return copy;
 }
 
 /*	for(int i=0; i<row; i++) {
@@ -50,7 +49,7 @@ int* zmien_stan(int* tab, int *copy, int row, int column) {
         }
 */
 
-int* copy_tab(int*tab, int row, int column) {
+void copy_tab(int*tab, int row, int column) {
 	//kopiuje zmieniona tablice copy->tab
 	for(int i=0; i<row; i++) {
                 memcpy(&tab[i], &copy[i], sizeof(tab[0]));
@@ -62,7 +61,6 @@ int* copy_tab(int*tab, int row, int column) {
                 }
                 printf("\n");
         }
-	return copy;
 }
 
 
