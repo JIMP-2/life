@@ -21,7 +21,7 @@ printf(" %d %d \n", x,y);
      if ( t == NULL ) 
     { 
 
-        printf("Nie␣moge␣przydzielic␣pamieci!\n"); 
+        printf("Brak pamieci!\n"); 
         return 1;
     } 
     else{
@@ -31,7 +31,7 @@ printf(" %d %d \n", x,y);
         t[i] = malloc( y* sizeof( int ) ); 
         if ( t[i] == NULL ) 
         { 
-            printf("Nie␣moge␣przydzielic␣pamieci!\n"); 
+            printf("brak pamieci!\n"); 
             return -1;
         } 
     } 
