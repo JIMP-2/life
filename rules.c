@@ -7,8 +7,9 @@
 void zmien_stan(int* tab, int *copy, int row, int column) {
 //przejscia tab->copy
 	//liczy liczbe sasiadow
+	int count=0;
 	for(int i=0; i<row; i++) {
-		for(int j=0; j<column; j++) {
+		for(int j=0; j<column; j++) {	
 			if(i!=0) 
 				count+=tab[i-1][j];
 			if(i!=row-1)
