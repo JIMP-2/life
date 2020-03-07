@@ -4,7 +4,7 @@
 #include "rules.h" 
 
 
-void zmien_stan(int* tab, int *copy, int row, int column) {
+void zmien_stan(int** tab, int** copy, int row, int column) {
 //przejscia tab->copy
 	//liczy liczbe sasiadow
 	int count=0;
@@ -50,7 +50,7 @@ void zmien_stan(int* tab, int *copy, int row, int column) {
         }
 */
 
-void copy_tab(int*tab, int row, int column) {
+void copy_tab(int** tab, int** copy, int row, int column) {
 	//kopiuje zmieniona tablice copy->tab
 	for(int i=0; i<row; i++) {
                 memcpy(&tab[i], &copy[i], sizeof(tab[0]));
