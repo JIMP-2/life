@@ -4,39 +4,35 @@
 #include "rules.h" 
 
 
-void zmien_stan(int** tab, int** copy, int row, int column) {
+void zmien_stan(int** tab, int** copy, int rows, int columns) {
 //przejscia tab->copy
-	//liczy liczbe sasiadow
-	int count=0;
-	for(int i=0; i<row; i++) {
-		for(int j=0; j<column; j++) {	
-			if(i!=0) 
-				count+=tab[i-1][j];
-			if(i!=row-1)
-				count+=tab[i+1][j];
-			if(j!=0)
-				count+=tab[i][j-1];
-			if(j!=column-1)
-				count+=tab[i][j+1];
-			if(i!=0 && j!=0)
-				count+=tab[i-1][j-1];
-			if(i!=0 && j!=column-1)
-				count+=tab[i-1][j+1];
-			if(i!=row-1 && j!=0)
-				count+=tab[i+1][j-1];
-			if(i!=row-1 && j!=column-1)
-				count+=tab[i+1][j+1];
-	//zmienia stan komorki zalenie od liczby sasiadow
+	//liczy sasiadow
+
+	for(int x=0; x<rows; x++) {
+		for(int y=0; y<columns; y++) {
+		        int count=0;
+		        for(int i=-1; i<2; i++) {
+                		for(int j=-1; j<2; j++) {
+                        		int c=y+j;
+                        		int r=x+i;
+                        		if(r>=0 && r<rows && c>=0 && c<columns) {
+                                		count+=tab[r][c];
+                        		}
+                		}
+        		}
+        		count-=tab[x][y];
+
+      	//zmienia stan komorki zalenie od liczby sasiadow
 			if(count < 2 || count >3) {
-				copy[i][j] = 0;
+				copy[x][y] = 0;
 			}
 			else if(count == 2) {
-				copy[i][j] = tab[i][j];
+				copy[x][y] = tab[x][y];
 			}
 			else {//if count ==3
-				copy[i][j] = 1;
+				copy[x][y] = 1;
 			}
-//			printf("sasiedzi [%d][%d] = %d\n", i+1, j+1, count);
+			printf("sasiedzi [%d][%d] = %d\n", x+1, y+1, count);
 			count=0;
 		}
 	}
