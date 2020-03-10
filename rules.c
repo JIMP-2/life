@@ -29,35 +29,33 @@ void zmien_stan(int** tab, int** copy, int rows, int columns) {
 			else if(count == 2) {
 				copy[x][y] = tab[x][y];
 			}
-			else {//if count ==3
+			else {
 				copy[x][y] = 1;
 			}
-			printf("sasiedzi [%d][%d] = %d\n", x+1, y+1, count);
+			// printf("sasiedzi [%d][%d] = %d\n", x+1, y+1, count);
 			count=0;
 		}
 	}
+
 }
 
-/*	for(int i=0; i<row; i++) {
-                for(int j=0; j<column; j++) {
-                        printf("%d ", copy[i][j]);
-                }
-                printf("\n");
-        }
-*/
-
-void copy_tab(int** tab, int** copy, int row, int column) {
+void copy_tab(int** tab, int** copy, int rows, int columns) {
 	//kopiuje zmieniona tablice copy->tab
-	for(int i=0; i<row; i++) {
-                memcpy(&tab[i], &copy[i], sizeof(tab[0]));
-        }
+	
+	   for(int x=0; x<rows; x++) {
+		for(int y=0; y<columns; y++) {
+			tab[x][y]=copy[x][y];
+		}
+	   }
 
-        for(int i=0; i<row; i++) {
-                for(int j=0; j<column; j++) {
+       for(int i=0; i<rows; i++) {
+                for(int j=0; j<columns; j++) {
                         printf("%d ", tab[i][j]);
                 }
                 printf("\n");
+			
         }
+		printf("\n");
 }
 
 
