@@ -4,9 +4,15 @@
 
 #include"rules.h"
 #include"tab2d.h"
+#include"life.h"
+
 
 
 int main ( int argc, char *argv[]){
+ 
+    char *out_png = ".";	 
+
+
 
 	int n;
     printf ("Prosze podac ile pokolen ma zostac wygenerowanych:\n");
@@ -39,14 +45,18 @@ int main ( int argc, char *argv[]){
     	int **copy = alokuj2d(x,y);
 
 
-		
-while( n>0){
+save_png(out_png, x, y, t, 1);
+
+    for (int i=1; i<=n; i++ ){
+
 	zmien_stan(t,copy,x,y);
 	
 	copy_tab(t,copy,x,y);
-	
-n--;
-}
+
+        save_png(out_png, x, y, t, i + 1);
+
+    }
+
 
 // zapis do pliku
 
@@ -70,3 +80,4 @@ n--;
 
      
 } 
+
