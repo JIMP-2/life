@@ -11,7 +11,7 @@ int save_2_png(char *file_name, int x, int y, int *t[] ) {
     png_infop png_info;
     png_bytep png_row;
 
-    int zoom=100;
+    int zoom= 800/x < 1700/y ? 800/x : 1700/y ;
     int p_width = y*zoom;
     int p_height = x*zoom;
 
