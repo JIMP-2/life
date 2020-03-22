@@ -1,20 +1,52 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<getopt.h>
 
 #include"rules.h"
 #include"tab2d.h"
-#include"life.h"
+#include"pictures.h"
 
-
+char *usage =
+  "\nUSAGE: %s -i txt_file_with_the_grid -o txt_file_with_output -n number_of_generations\n\n";
 
 int main ( int argc, char *argv[]){
  
-    char *out_png = ".";	 
+    
+char *out_png = ".";
+	int opt;
+      	char* min = NULL;
+	char* mout = NULL;
+  	int n = 5;
+	char* programe = argv[0];
+
+	while((opt = getopt (argc, argv, "i:o:n:")) != -1) {
+		switch (opt) {
+			case 'i': min = optarg; break;
+			case 'o': mout = optarg; break;
+			case 'n': n = atoi(optarg); break;
+			default: fprintf(stderr, usage, programe);
+		}
+	}
+
+	if(min != NULL) {
+		FILE *out = NULL;
+		FILE *in = fopen( min, "r");
+		
+		if(in == NULL) {
+			fprintf(stderr, "wrong in\n");
+			exit (EXIT_FAILURE);
+		}
+
+		out = fopen (mout, "w");
+		if(out == NULL) {
+			fprintf(stderr, "wrong out\n");
+			exit (EXIT_FAILURE);
+		}
 
 
 
-	int n;
+/*	int n;
     printf ("Prosze podac ile pokolen ma zostac wygenerowanych:\n");
  
     scanf ("%d", &n);
@@ -23,7 +55,7 @@ int main ( int argc, char *argv[]){
     	FILE *in = argc > 1 ? fopen( argv[1], "r" ) : stdin;
         FILE *out = argc > 2 ? fopen( argv[2], "w" ) : stdout;
 
-		
+*/		
    
 		int x;
     	int y;
@@ -45,7 +77,8 @@ int main ( int argc, char *argv[]){
     	int **copy = alokuj2d(x,y);
 
 
-save_png(out_png, x, y, t, 1);
+save_png(out_png, x, y, t, 0);
+show(t, x, y);
 
     for (int i=1; i<=n; i++ ){
 
@@ -53,7 +86,8 @@ save_png(out_png, x, y, t, 1);
 	
 	copy_tab(t,copy,x,y);
 
-        save_png(out_png, x, y, t, i + 1);
+        save_png(out_png, x, y, t, i);
+        show(t, x, y);
 
     }
 
@@ -78,6 +112,6 @@ save_png(out_png, x, y, t, 1);
 
 	return 0;
 
-     
+	}     
 } 
 
