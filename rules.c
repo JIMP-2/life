@@ -47,15 +47,17 @@ void copy_tab(int** tab, int** copy, int rows, int columns) {
 			tab[x][y]=copy[x][y];
 		}
 	   }
+}
 
-       for(int i=0; i<rows; i++) {
+void show(int **tab, int rows, int columns) {
+	for(int i=0; i<rows; i++) {
                 for(int j=0; j<columns; j++) {
                         printf("%d ", tab[i][j]);
                 }
                 printf("\n");
-			
+
         }
-		printf("\n");
+                printf("\n");
 }
 
 
