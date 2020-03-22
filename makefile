@@ -1,3 +1,14 @@
-main:
-	$(CC)  main.c rules.c tab2d.c gen_name.c png.c  -lm -lpng
-	./a.out z.txt do.txt
+life: main.o tab2d.o rules.o pictures.o
+	$(CC)  -o life main.o tab2d.o rules.o pictures.o -lm -lpng 
+
+tab2d.o: tab2d.c tab2d.h
+
+rules.o: rules.c rules.h
+
+pictures.o: pictures.c pictures.h
+
+.PHONY: clean
+
+clean:
+	-rm *.o life
+
