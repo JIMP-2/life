@@ -1,5 +1,5 @@
-#ifndef __LIFE_H__
-#define __LIFE_H__
+#ifndef __PICTURES_H__
+#define __PICTURES_H__
 
 
 
