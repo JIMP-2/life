@@ -72,7 +72,7 @@ void save_png(char *out_png, int x, int y, int *t[] , int n) {
     if (err) {
         printf("Problem with saving generation #%d to %s.\n", n, file_name);
     } else {
-        printf("Saved generation #%d to %s.\n", n, file_name);
+        printf("\nSaved generation #%d to %s.\n", n, file_name);
     }
 
     free(file_name);

@@ -40,6 +40,7 @@ void zmien_stan(int** tab, int** copy, int rows, int columns) {
 }
 
 void copy_tab(int** tab, int** copy, int rows, int columns) {
+
 	//kopiuje zmieniona tablice copy->tab
 	
 	   for(int x=0; x<rows; x++) {

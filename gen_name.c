@@ -4,6 +4,8 @@
 
 #include "life.h"
 
+// numeruje nazwy plikow png wedlug liczby pokolen
+
 char *create_name(char *out_png, char *file_name, int n, char *ext) {
     char *new_str = malloc(sizeof(char) * (strlen(out_png) + strlen(file_name) + 7 + strlen(ext)));
 

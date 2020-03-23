@@ -29,6 +29,7 @@ char *out_png = ".";
 		}
 	}
 
+
 	if(min != NULL) {
 		FILE *out = NULL;
 		FILE *in = fopen( min, "r");
@@ -40,37 +41,31 @@ char *out_png = ".";
 
 		out = fopen (mout, "w");
 		if(out == NULL) {
-			fprintf(stderr, "wrong out\n");
+			out=stdout;
+
+		}
+		if (n <0) {
+			fprintf(stderr, "\nthe index can't be negative\n\n");
 			exit (EXIT_FAILURE);
 		}
 
 
 
-/*	int n;
-    printf ("Prosze podac ile pokolen ma zostac wygenerowanych:\n");
- 
-    scanf ("%d", &n);
-	printf( "\n");
 
-    	FILE *in = argc > 1 ? fopen( argv[1], "r" ) : stdin;
-        FILE *out = argc > 2 ? fopen( argv[2], "w" ) : stdout;
-
-*/		
-   
-		int x;
+	int x;
     	int y;
-
+	
+	//  czytanie z pliku
+	
        	fscanf(in,"%d %d",&x,&y); 
 
-	printf("%d %d \n", x,y);
-	printf("\n");
-		
 	int **t = alokuj2d(x,y);
 
 	for (int  i = 0; i < x; i++ ) {
         	for ( int j = 0; j < y; j++ ) 
            	fscanf(in,"%d", &t[i][j] ); 
   	}
+
 	
 	fclose(in);	
 
@@ -79,6 +74,8 @@ char *out_png = ".";
 
 save_png(out_png, x, y, t, 0);
 show(t, x, y);
+
+ // wywołanie funkcji odpowiedzialnej za zmianę stanu
 
     for (int i=1; i<=n; i++ ){
 
@@ -93,6 +90,7 @@ show(t, x, y);
 
 
 // zapis do pliku
+
 
      fprintf(out, "%d %d\n", x,y); 
 
