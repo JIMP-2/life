@@ -1,0 +1,6 @@
+Implementacja automatu komórkowego - gry w życie Johna Conway'a zrealizowana w ramach labolatoriów JIMP 2 w języku C.
+
+Uruchomienie programu:
+
+make
+./life -i [plik z którego chcemy wczytać początkową tablicę] -o [plik, do którego chcemy zapisać wynik końcowy] -n [liczba pokoleń]
