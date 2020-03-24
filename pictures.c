@@ -44,7 +44,7 @@ int save_2_png(char *file_name, int x, int y, int *t[] ) {
 
     for (int x = 0; x < p_height; x++) {
         for (int y = 0; y < p_width; y++) {
-            png_row[y] = t[x/zoom][y/zoom] * 255;
+            png_row[y] =255 - t[x/zoom][y/zoom] * 255;
         } 
         png_write_row(png_data, png_row);
     }
